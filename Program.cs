@@ -97,9 +97,9 @@ namespace DemoArrayer2
 
 			// undvik "magic numbers", använd variabler i stället för att upprepa tal
 			const int maximum = 20, minimum = 10;
+			Random r = new Random();
 			for (int i = 0; i < slumpadArray.Length; i++)
 			{
-				Random r = new Random();
 				int slumpatTal = r.Next(minimum, maximum);
 				slumpadArray[i] = slumpatTal;
 			}
