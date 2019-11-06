@@ -6,6 +6,7 @@ namespace DemoArrayer2
 	{
 		static void Main(string[] args)
 		{
+			/*
 			string[] friends = new string[]
 			{
 				"Mark Hamill", "Tom Cruise", "Sean Connery"
@@ -52,7 +53,67 @@ namespace DemoArrayer2
 			foreach (var friend in friends)
 			{
 				Console.WriteLine(friend);
+			}*/
+
+			/* 5.2 Skriv ett program som räknar ut summan av alla element i arrayen [2, 3, 5, 8, 13, 21, 34].
+			Extra utmaning: varannat tal ska adderas och varannat subtraheras. Testa med arrayen [1, 1, 1, 1].
+			 */
+			// skapa en array
+			// loopa och gör en addition i taget
+			// kom ihåg värdet hittills - variabel för summan
+			int[] numbers = new int[] { 2, 3, 5, 8, 13, 21, 34 };
+			int sum = 0;
+			for (int i = 0; i < numbers.Length; i++)
+			{
+				sum += numbers[i];
 			}
+			Console.WriteLine("Summan är: " + sum);
+
+			// 1 - 1 + 1 - 1
+			int[] numbers2 = new int[] { 1, 1, 1, 1 };
+			int sum2 = 0;
+			bool usePlus = true;
+			for (int i = 0; i < numbers2.Length; i++)
+			{
+				// Alternativ lösning: if(i % 2 == 0)
+				if (usePlus)
+				{
+					usePlus = false;
+					sum2 += numbers2[i];
+				}
+				else
+				{
+					usePlus = true;
+					sum2 -= numbers2[i];
+				}
+			}
+			Console.WriteLine("Summan är: " + sum2);
+
+
+			/* 5.3 Skriv ett program som skapar en array med fem heltal, som ska slumpas fram. Programmet ska sedan gå igenom arrayen och skriva ut vilket det största och minsta talet är samt hur många tal som är udda.
+			*/
+			const int numberOfRandoms = 15;
+			int[] slumpadArray = new int[numberOfRandoms];
+
+			// undvik "magic numbers", använd variabler i stället för att upprepa tal
+			const int maximum = 20, minimum = 10;
+			for (int i = 0; i < slumpadArray.Length; i++)
+			{
+				Random r = new Random();
+				int slumpatTal = r.Next(minimum, maximum);
+				slumpadArray[i] = slumpatTal;
+			}
+			// skriva ut vilket det största och minsta talet är samt hur många tal som är udda.
+			Console.WriteLine();
+			Console.WriteLine("Slumpad array:");
+			int max = minimum, min = maximum;
+			foreach (int tal in slumpadArray)
+			{
+				Console.WriteLine(tal);
+				if (tal > max) { max = tal; }
+				if (tal < min) { min = tal; }
+			}
+			Console.WriteLine($"Största värdet är {max} och minsta värdet är {min}.");
 		}
 	}
 }
